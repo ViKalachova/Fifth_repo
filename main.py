@@ -12,11 +12,10 @@ class Name(Field):
 
 class Phone(Field):
     def __init__(self, value):
-        try:
-            len(value) == 10
+        if len(value) == 10 and int(value):
             self.value = value
-        except ValueError:
-            print (f'The entered number {value} is incorrect')
+        else:
+            raise ValueError
 
 class Record:
     def __init__(self, name):

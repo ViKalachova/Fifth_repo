@@ -12,11 +12,10 @@ class Name(Field):
 
 class Phone(Field):
     def __init__(self, value):
-        try:
-            len(value) == 10
+        if len(value) == 10 and int(value):
             self.value = value
-        except ValueError:
-            print (f'The entered number {value} is incorrect')
+        else:
+            raise ValueError
 
 class Record:
     def __init__(self, name):
@@ -30,7 +29,6 @@ class Record:
         self.phones.remove(Phone(number).value)
 
     def edit_phone(self, number, new_number):
-        pass
         # i = self.phones.index(number)
         # self.phones[i] = new_number
 
@@ -78,6 +76,3 @@ if __name__ == '__main__':
     print(f"{john.name}: {found_phone}")
     book.delete("Jane")
     print(book)
-
-
-
