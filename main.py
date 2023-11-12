@@ -29,9 +29,8 @@ class Record:
         self.phones.remove(Phone(number).value)
 
     def edit_phone(self, number, new_number):
-        pass
-        # i = self.phones.index(number)
-        # self.phones[i] = new_number
+        i = self.phones.index(number)
+        self.phones[i] = new_number
 
     def find_phone(self, number):
         for num in self.phones:
@@ -47,9 +46,8 @@ class AddressBook(UserDict):
         self.data[record.name.value] = record.phones
         
     def find(self, name):
-        for key, value in self.data.items():
-            if str(key) == name:
-                return value
+        if name in self.data:
+            return self.data[name]
 
     def delete(self, name):
         for key in list(self.data.keys()):
